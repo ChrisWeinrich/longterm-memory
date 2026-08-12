@@ -1,0 +1,10 @@
+{
+  "handshake": "Use this MCP as the shared long-term memory for this assistant project. Start with wiki_discover or wiki_index, then search and retrieve only the context needed. Accepted pages are curated and authoritative. Draft pages require explicit opt-in, are unreviewed, and must not be presented as facts. Use research and discussion workflows to create reviewable knowledge; do not infer or invent missing knowledge.",
+  "wiki_discover": "Describe the current long-term-memory policy, frontmatter schema, document types, observed tags, collections, and default authority rules.",
+  "wiki_index": "Return the active navigation index and compact metadata for accepted, curated long-term-memory pages.",
+  "wiki_search": "Search accepted long-term-memory pages using simple, explainable case-insensitive text matching. Drafts are excluded unless explicitly requested and are always unreviewed.",
+  "wiki_get": "Get one long-term-memory page by server-issued ID. File paths are never accepted. Clearly identify draft content as non-authoritative.",
+  "wiki_index_resource": "The accepted navigation entry point for curated long-term memory.",
+  "wiki_schema_resource": "The long-term-memory frontmatter schema, status meanings, and authority policy.",
+  "wiki_log_resource": "The maintenance log for material changes to curated long-term memory."
+}

@@ -1,0 +1,30 @@
+# This file is managed by Copier and records the template source and answers
+# needed by `copier update`.
+_commit: '3982159'
+_src_path: /Users/christianweinrich/Source/ai-assistant-template
+project_description: A curated, local-first long-term memory for my assistants, research,
+    decisions, and durable personal knowledge.
+project_name: Personal Long-Term Memory
+project_slug: personal-long-term-memory
+wiki_mcp_discover_description: Describe the current long-term-memory policy, frontmatter
+    schema, document types, observed tags, collections, and default authority rules.
+wiki_mcp_get_description: Get one long-term-memory page by server-issued ID. File
+    paths are never accepted. Clearly identify draft content as non-authoritative.
+wiki_mcp_handshake: Use this MCP as the shared long-term memory for this assistant
+    project. Start with wiki_discover or wiki_index, then search and retrieve only
+    the context needed. Accepted pages are curated and authoritative. Draft pages
+    require explicit opt-in, are unreviewed, and must not be presented as facts. Use
+    research and discussion workflows to create reviewable knowledge; do not infer
+    or invent missing knowledge.
+wiki_mcp_index_description: Return the active navigation index and compact metadata
+    for accepted, curated long-term-memory pages.
+wiki_mcp_index_resource_description: The accepted navigation entry point for curated
+    long-term memory.
+wiki_mcp_log_resource_description: The maintenance log for material changes to curated
+    long-term memory.
+wiki_mcp_schema_resource_description: The long-term-memory frontmatter schema, status
+    meanings, and authority policy.
+wiki_mcp_search_description: Search accepted long-term-memory pages using simple,
+    explainable case-insensitive text matching. Drafts are excluded unless explicitly
+    requested and are always unreviewed.
+
