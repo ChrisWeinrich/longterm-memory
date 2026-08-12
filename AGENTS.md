@@ -28,6 +28,9 @@ it.
   `wiki_index`, or `wiki_search` tools before broader filesystem search or web
   research. It exposes accepted wiki knowledge by default; drafts are
   unreviewed and require explicit opt-in.
+- The Wiki MCP may queue externally supplied context only in `wiki/inbox/` as
+  `external-note` drafts. Do not treat inbox content as knowledge; a human must
+  curate it into `wiki/sources/` before it can become accepted.
 - Connect genuinely related discussions, research reports, and wiki pages with
   Obsidian wikilinks. Add links when creating or materially changing knowledge;
   consider reciprocal links only when they add context and are permitted by the

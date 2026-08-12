@@ -4,12 +4,15 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter
+from datetime import datetime, timezone
 import json
 from pathlib import Path
+import re
 from typing import Any, Literal
 
 from mcp.server.fastmcp import FastMCP
 from pydantic import Field
+import yaml
 
 from .catalog import VALID_STATES, WikiError, by_state, document_summary, documents, load_wiki_root, snippet_for
 
@@ -24,6 +27,7 @@ DEFAULT_DISPLAY_TEXT = {
     "wiki_index": "Return the active wiki index and compact metadata for accepted pages.",
     "wiki_search": "Search allowed wiki content with simple, explainable case-insensitive text matching.",
     "wiki_get": "Get one wiki page by server-issued ID; file paths are never accepted.",
+    "wiki_submit_note": "Save externally supplied context as an unreviewed draft in the wiki inbox for human curation.",
     "wiki_index_resource": "The accepted wiki navigation page.",
     "wiki_schema_resource": "The wiki frontmatter and authority policy.",
     "wiki_log_resource": "The accepted wiki maintenance log.",
@@ -46,6 +50,43 @@ def load_display_text(config_path: Path) -> dict[str, str]:
     return configured
 
 
+def _slug(value: str) -> str:
+    """Make a short filesystem-safe name without accepting a client path."""
+    slug = re.sub(r"[^a-z0-9]+", "-", value.casefold()).strip("-")
+    return slug[:80] or "external-note"
+
+
+def _write_inbox_note(wiki_root: Path, *, title: str, content: str, tags: list[str]) -> Path:
+    """Write one externally supplied draft under the fixed inbox directory only."""
+    inbox = (wiki_root / "inbox").resolve()
+    try:
+        inbox.relative_to(wiki_root)
+    except ValueError as error:  # Defensive guard for unusual symlinked vaults.
+        raise WikiError("The wiki inbox must resolve inside the configured wiki root.") from error
+    inbox.mkdir(parents=True, exist_ok=True)
+
+    received_at = datetime.now(timezone.utc).replace(microsecond=0)
+    frontmatter = {
+        "title": title.strip(),
+        "type": "external-note",
+        "tags": ["external", "inbox", *tags],
+        "state": "draft",
+        "origin": "wiki-mcp",
+        "received_at": received_at.isoformat().replace("+00:00", "Z"),
+    }
+    document = f"---\n{yaml.safe_dump(frontmatter, allow_unicode=True, sort_keys=False)}---\n\n# {title.strip()}\n\n{content.strip()}\n"
+    prefix = f"{received_at.strftime('%Y-%m-%d--%H%M%S')}--{_slug(title)}"
+    for suffix in range(1, 1_000):
+        candidate = inbox / f"{prefix}{'' if suffix == 1 else f'--{suffix}'}.md"
+        try:
+            with candidate.open("x", encoding="utf-8") as file:
+                file.write(document)
+            return candidate
+        except FileExistsError:
+            continue
+    raise WikiError("Could not allocate an inbox note filename. Resolve existing inbox filename collisions.")
+
+
 def create_server(config_path: Path) -> FastMCP:
     """Create the server; catalog reads are intentionally fresh for each request."""
     wiki_root = load_wiki_root(config_path)
@@ -58,6 +99,12 @@ def create_server(config_path: Path) -> FastMCP:
         "readOnlyHint": True,
         "destructiveHint": False,
         "idempotentHint": True,
+        "openWorldHint": False,
+    }
+    write_annotations = {
+        "readOnlyHint": False,
+        "destructiveHint": False,
+        "idempotentHint": False,
         "openWorldHint": False,
     }
 
@@ -167,6 +214,39 @@ def create_server(config_path: Path) -> FastMCP:
             "notice": "This draft is unreviewed and not authoritative." if item.state == "draft" else None,
         }
 
+    @mcp.tool(
+        name="wiki_submit_note",
+        description=text["wiki_submit_note"],
+        annotations=write_annotations,
+    )
+    def wiki_submit_note(
+        title: str = Field(min_length=1, max_length=200, description="Short title for the externally supplied note."),
+        content: str = Field(min_length=1, max_length=20_000, description="Markdown content to queue for human curation."),
+        tags: list[str] | None = Field(default=None, max_length=20, description="Optional lowercase tags describing the note."),
+    ) -> dict[str, Any]:
+        """Queue external context in wiki/inbox only; it is never curated or authoritative."""
+        normalized_title = title.strip()
+        normalized_content = content.strip()
+        if not normalized_title or not normalized_content:
+            raise WikiError("title and content must contain visible text.")
+        requested_tags = [tag.strip().casefold() for tag in tags or [] if tag.strip()]
+        if any(not re.fullmatch(r"[a-z0-9][a-z0-9-]*", tag) for tag in requested_tags):
+            raise WikiError("tags must use lowercase letters, digits, and dashes.")
+        path = _write_inbox_note(
+            wiki_root,
+            title=normalized_title,
+            content=normalized_content,
+            tags=list(dict.fromkeys(requested_tags)),
+        )
+        return {
+            "status": "queued_for_curation",
+            "type": "external-note",
+            "state": "draft",
+            "origin": "wiki-mcp",
+            "path": path.relative_to(wiki_root).as_posix(),
+            "notice": "This external note is unreviewed and is not authoritative wiki knowledge.",
+        }
+
     @mcp.resource(
         "wiki://index",
         description=text["wiki_index_resource"],
@@ -210,7 +290,7 @@ def create_server(config_path: Path) -> FastMCP:
 def main() -> None:
     """Run the local server over stdio without writing to stdout."""
     default_config = Path(__file__).resolve().parents[2] / "wiki-mcp.config.yaml"
-    parser = argparse.ArgumentParser(description="Read-only local MCP server for a curated Markdown wiki.")
+    parser = argparse.ArgumentParser(description="Local MCP server for curated wiki reads and inbox-only external notes.")
     parser.add_argument("--config", type=Path, default=default_config, help="Path to wiki-mcp.config.yaml")
     args = parser.parse_args()
     create_server(args.config.resolve()).run()

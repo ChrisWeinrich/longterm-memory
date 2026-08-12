@@ -9,7 +9,7 @@ from mcp.client.stdio import stdio_client
 from wiki_mcp.server import DEFAULT_DISPLAY_TEXT, create_server
 
 
-def test_server_exposes_read_only_wiki_capabilities(tmp_path: Path) -> None:
+def test_server_exposes_wiki_reads_and_inbox_only_external_notes(tmp_path: Path) -> None:
     wiki = tmp_path / "wiki"
     wiki.mkdir()
     (wiki / "index.md").write_text(
@@ -57,6 +57,7 @@ def test_server_exposes_read_only_wiki_capabilities(tmp_path: Path) -> None:
                     "wiki_index": text_config["wiki_index"],
                     "wiki_search": text_config["wiki_search"],
                     "wiki_get": text_config["wiki_get"],
+                    "wiki_submit_note": text_config["wiki_submit_note"],
                 }
 
                 search = await client.call_tool("wiki_search", {"query": "Index"})
@@ -78,6 +79,21 @@ def test_server_exposes_read_only_wiki_capabilities(tmp_path: Path) -> None:
                 allowed = await client.call_tool("wiki_get", {"id": draft_id, "include_drafts": True})
                 assert allowed.structuredContent is not None
                 assert allowed.structuredContent["notice"] == "This draft is unreviewed and not authoritative."
+
+                submitted = await client.call_tool(
+                    "wiki_submit_note",
+                    {"title": "Outside context", "content": "A note from another assistant.", "tags": ["handoff"]},
+                )
+                assert submitted.structuredContent is not None
+                assert submitted.structuredContent["status"] == "queued_for_curation"
+                assert submitted.structuredContent["path"].startswith("inbox/")
+                inbox_note = wiki / submitted.structuredContent["path"]
+                assert inbox_note.is_file()
+                assert "type: external-note" in inbox_note.read_text(encoding="utf-8")
+                assert "origin: wiki-mcp" in inbox_note.read_text(encoding="utf-8")
+                inbox_search = await client.call_tool("wiki_search", {"query": "Outside context", "include_drafts": True})
+                assert inbox_search.structuredContent is not None
+                assert inbox_search.structuredContent["total_count"] == 0
 
                 resources = await client.list_resources()
                 assert {str(resource.uri): resource.description for resource in resources.resources} == {

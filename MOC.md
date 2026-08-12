@@ -43,7 +43,8 @@ Local, read-only stdio MCP for controlled access to accepted wiki knowledge.
 
 Curated, durable project knowledge. Start at `wiki/index.md`; published
 research reports, discussion summaries, and source pages live in
-`wiki/sources/`.
+`wiki/sources/`. `wiki/inbox/` contains unreviewed external notes awaiting
+human curation.
 
 <!-- moc:path=_raw -->
 

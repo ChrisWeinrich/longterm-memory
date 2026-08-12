@@ -1,6 +1,6 @@
 # This file is managed by Copier and records the template source and answers
 # needed by `copier update`.
-_commit: 5459f0e
+_commit: ce7a1ec
 _src_path: /Users/christianweinrich/Source/ai-assistant-template
 project_description: A curated, local-first long-term memory for my assistants, research,
     decisions, and durable personal knowledge.
@@ -27,4 +27,6 @@ wiki_mcp_schema_resource_description: The long-term-memory frontmatter schema, s
 wiki_mcp_search_description: Search accepted long-term-memory pages using simple,
     explainable case-insensitive text matching. Drafts are excluded unless explicitly
     requested and are always unreviewed.
+wiki_mcp_submit_note_description: Save externally supplied context as an unreviewed
+    draft in the wiki inbox for human curation.
 

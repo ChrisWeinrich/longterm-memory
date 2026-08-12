@@ -29,10 +29,11 @@ explainable invariant and exits non-zero only when that invariant fails.
 ## Report the result
 
 Start with the state report: total Markdown documents, accepted, draft,
-archived, invalid or unclassified, and non-accepted totals. Then summarize
-health failures before warnings. Do not claim the repository is healthy if a
-check reports errors. Explain any intentional exception and either fix it or
-record why it is being accepted.
+archived, invalid or unclassified, and non-accepted totals. Then report raw
+source ingestion coverage, research workspaces awaiting plan review, and
+unindexed or invalid wiki knowledge. Summarize health failures before warnings.
+Do not claim the repository is healthy if a check reports errors. Explain any
+intentional exception and either fix it or record why it is being accepted.
 
 ## Extend it
 

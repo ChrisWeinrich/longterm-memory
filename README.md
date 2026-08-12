@@ -56,9 +56,11 @@ Codex discovers this project's skills directly in `.agents/skills/`.
 Use every script in `.agents/skills/project-state-health/scripts/` for a
 read-only repository state and consistency report. They count accepted and
 non-accepted Markdown knowledge, and verify required structure, frontmatter,
-wikilinks, and the accepted-only active wiki index. Add a small script there,
-rather than creating an ad-hoc manual checklist, when this project needs
-further deterministic checks or status metrics.
+wikilinks, the accepted-only active wiki index, raw-source ingestion coverage,
+research-workspace readiness, and external notes awaiting curation in
+`wiki/inbox/`. Add a small script there, rather than
+creating an ad-hoc manual checklist, when this project needs further
+deterministic checks or status metrics.
 
 ## Template updates
 

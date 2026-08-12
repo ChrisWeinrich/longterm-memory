@@ -29,6 +29,10 @@ When asked to ingest a file from `_raw/`:
    Draft pages remain available for review but are not active wiki knowledge;
    archived pages are never indexed.
 6. Append a concise dated entry to `wiki/log.md`.
+7. Run `.agents/skills/project-state-health/scripts/50-raw-source-ingestion.sh`
+   before calling the source ingested. Resolve every reported missing or
+   duplicate mapping; each `_raw/` file needs exactly one `wiki-source` page
+   whose `source` frontmatter points to it.
 
 ## Answer a wiki question
 
