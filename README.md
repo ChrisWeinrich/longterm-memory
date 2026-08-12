@@ -12,8 +12,12 @@ A curated, local-first long-term memory for my assistants, research, decisions, 
 
 ## Start here
 
-This project starts deliberately small. Add one clear capability at a time,
-and keep each layer understandable before building the next.
+This vault is the durable memory layer for Christian's assistants. It captures
+reviewed personal context, decisions, research, and working conventions in
+plain Markdown, so the knowledge remains inspectable and useful independent of
+any one assistant or tool. Keep it deliberately small: add one clear
+capability at a time, and keep each layer understandable before building the
+next.
 
 ## Obsidian
 
@@ -37,7 +41,7 @@ only a human review can make either type active, citable wiki knowledge.
 
 ## Wiki MCP
 
-The generated project includes a local, read-only stdio MCP under
+This project includes a local, read-only stdio MCP under
 `_mcp/wiki-mcp/`. Start with its `wiki_discover`, `wiki_index`, or
 `wiki_search` tools when looking for durable knowledge; it exposes accepted
 pages by default and labels explicit draft results as unreviewed. See
@@ -64,9 +68,19 @@ or use an agent that provides it. See `_research/README.md` for details.
 
 ## Project conventions
 
-Add the human-facing project purpose, operating model, integrations, and local
-conventions here. Keep durable reference knowledge in `wiki/`. Keep this
-section below the marker so Copier's base documentation above can update
-independently.
+- Christian owns review and acceptance of durable knowledge. Agents may create
+  drafts, but must not promote them to `accepted` without explicit approval.
+- `wiki/` is the source of truth for curated knowledge. Keep `wiki/index.md`
+  limited to accepted pages; use `_raw/` for immutable source material and
+  `_research/` for active research work.
+- Use the local Wiki MCP for durable context before searching elsewhere. Use
+  the repository skills to create notes, research, discussion summaries, and
+  maintained wiki pages.
+- Keep this vault portable and local-first: do not add hosted dependencies,
+  automatic synchronisation, or secrets unless a concrete need is agreed and
+  documented.
+
+Keep this section below the marker so Copier's base documentation above can
+update independently.
 
 <!-- project-conventions:end -->

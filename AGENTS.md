@@ -51,8 +51,19 @@ it.
 
 ## Project conventions
 
-Add this project's agent-specific rules, workflows, integrations, and
-operating constraints here. Keep this section below the marker so Copier base
-conventions above can update independently.
+- Christian is the human reviewer for durable knowledge. Create new knowledge
+  as a `draft` and never change it to `accepted` without explicit approval.
+- Treat `wiki/` as the curated source of truth, `_raw/` as immutable input,
+  and `_research/` as a workspace. Keep `wiki/index.md` restricted to accepted
+  pages.
+- Query the local Wiki MCP before broader search when durable context may
+  exist. Follow the repository skills for notes, research, discussions, and
+  wiki maintenance.
+- Preserve the vault's local-first, portable design. Do not add hosted
+  services, automatic synchronisation, secrets, or unnecessary infrastructure
+  without explicit approval and matching documentation.
+
+Keep this section below the marker so Copier base conventions above can update
+independently.
 
 <!-- project-conventions:end -->
