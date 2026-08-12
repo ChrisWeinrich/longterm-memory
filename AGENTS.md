@@ -21,12 +21,15 @@ it.
 - Keep `_raw/` immutable. Only accepted pages belong in `wiki/index.md`.
 - Use the relevant skill for research, discussions, wiki maintenance, and note
   creation.
+- Run every script in `.agents/skills/project-state-health/scripts/` when
+  reporting repository state or validating repository-wide conventions. Add a
+  small, deterministic script there as this project gains new requirements.
 - For durable knowledge, first use the local Wiki MCP's `wiki_discover`,
   `wiki_index`, or `wiki_search` tools before broader filesystem search or web
   research. It exposes accepted wiki knowledge by default; drafts are
   unreviewed and require explicit opt-in.
 - Connect genuinely related discussions, research reports, and wiki pages with
-  `[[wikilinks]]`. Add links when creating or materially changing knowledge;
+  Obsidian wikilinks. Add links when creating or materially changing knowledge;
   consider reciprocal links only when they add context and are permitted by the
   page's review state.
 - When a conversation yields durable context, confirmed decisions, a stable

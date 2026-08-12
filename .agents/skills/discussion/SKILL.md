@@ -40,7 +40,7 @@ brainstorming, rejected alternatives, or routine status chatter.
 4. Include `## Entscheidungen` only if a decision was actually made or
    explicitly confirmed. Otherwise describe the current state and uncertainty
    under `## Konsens / aktueller Stand`.
-5. Add useful `[[wikilinks]]` to genuinely related research reports,
+5. Add useful Obsidian wikilinks to genuinely related research reports,
    discussions, and accepted wiki pages. Consider a reciprocal link when it
    adds meaningful context, but do not modify an accepted page without the
    user's explicit approval.

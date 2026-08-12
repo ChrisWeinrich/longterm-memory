@@ -1,6 +1,6 @@
 # This file is managed by Copier and records the template source and answers
 # needed by `copier update`.
-_commit: '3982159'
+_commit: 5459f0e
 _src_path: /Users/christianweinrich/Source/ai-assistant-template
 project_description: A curated, local-first long-term memory for my assistants, research,
     decisions, and durable personal knowledge.

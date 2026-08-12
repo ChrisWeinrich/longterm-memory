@@ -49,7 +49,7 @@ an active wiki page until a reviewer changes its state to `accepted`.
 Every completed research report in `wiki/sources/` is logged, whether it is
 deep or shallow research:
 
-1. Check `wiki/index.md` for related pages and add useful `[[wikilinks]]` to
+1. Check `wiki/index.md` for related pages and add useful Obsidian wikilinks to
    the report.
 2. Add the report to `wiki/index.md` only after its state is `accepted`.
    Draft reports remain unindexed until review; archived reports are never

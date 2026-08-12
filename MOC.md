@@ -32,6 +32,8 @@ Obsidian and research templates for consistent Markdown documents.
 <!-- moc:path=.agents/skills -->
 
 Project skills and their workflows, discovered directly by Codex.
+`project-state-health` provides the repository-wide, extensible state and
+health report.
 
 <!-- moc:path=_mcp/wiki-mcp -->
 

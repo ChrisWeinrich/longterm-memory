@@ -24,7 +24,7 @@ When asked to ingest a file from `_raw/`:
    `_templates/wiki-source.md`. Use a stable, descriptive filename.
 3. Keep the summary factual. Put interpretations, unanswered questions, and
    contradictions in the final section instead of presenting them as facts.
-4. Add useful `[[wikilinks]]` to related wiki pages.
+4. Add useful Obsidian wikilinks to related wiki pages.
 5. Update `wiki/index.md` with the page only when its state is `accepted`.
    Draft pages remain available for review but are not active wiki knowledge;
    archived pages are never indexed.
@@ -34,7 +34,7 @@ When asked to ingest a file from `_raw/`:
 
 1. Start with `wiki/index.md`, then read the relevant accepted wiki pages.
 2. Answer from accepted pages and cite the supporting pages with
-   `[[wikilinks]]`.
+   Obsidian wikilinks.
 3. Do not use a draft as authoritative evidence. If a draft is useful context,
    label it explicitly as unreviewed and do not present its claims as durable
    wiki knowledge.

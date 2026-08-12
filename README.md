@@ -36,7 +36,8 @@ answers; drafts remain available for review. Original sources are immutable.
 See `.agents/skills/llm-wiki/SKILL.md` for the ingest and query workflow.
 
 Research reports and discussion summaries are separate draft document types in
-`wiki/sources/`. Agents connect genuinely related pages with `[[wikilinks]]`;
+`wiki/sources/`. Agents connect genuinely related pages with Obsidian
+wikilinks;
 only a human review can make either type active, citable wiki knowledge.
 
 ## Wiki MCP
@@ -51,6 +52,13 @@ does not replace the `research` or `llm-wiki` skills.
 ## Agent skills
 
 Codex discovers this project's skills directly in `.agents/skills/`.
+
+Use every script in `.agents/skills/project-state-health/scripts/` for a
+read-only repository state and consistency report. They count accepted and
+non-accepted Markdown knowledge, and verify required structure, frontmatter,
+wikilinks, and the accepted-only active wiki index. Add a small script there,
+rather than creating an ad-hoc manual checklist, when this project needs
+further deterministic checks or status metrics.
 
 ## Template updates
 
