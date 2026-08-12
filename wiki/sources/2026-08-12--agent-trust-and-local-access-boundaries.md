@@ -2,7 +2,7 @@
 title: "Agent Trust and Local Access Boundaries"
 type: discussion
 tags: [agents, security, trust-boundaries]
-state: draft
+state: accepted
 created: 2026-08-12
 conversation:
   system: codex

@@ -18,3 +18,4 @@ state: accepted
 - 2026-08-12 — Draft discussion added: [[2026-08-12--agent-trust-and-local-access-boundaries]] (pending human review).
 - 2026-08-12 — Shallow research accepted: [[2026-08-12--paulvonberg-db-mcp-server--shallow]].
 - 2026-08-12 — Discussion accepted: [[2026-08-12--local-deutsche-bahn-mcp-for-agents]].
+- 2026-08-12 — Discussion accepted: [[2026-08-12--agent-trust-and-local-access-boundaries]].
