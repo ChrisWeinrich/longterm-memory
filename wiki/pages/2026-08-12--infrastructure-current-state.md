@@ -4,6 +4,7 @@ type: research-report
 tags: [assessment, infrastructure, operations, repository]
 state: accepted
 created: 2026-08-12
+migrated_from: wiki/sources
 source_repository: "/Users/christianweinrich/Source/infrastructure"
 source_revision: "23847ca"
 research_scope: repository-only

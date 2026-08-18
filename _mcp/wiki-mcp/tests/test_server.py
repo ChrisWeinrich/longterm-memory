@@ -9,7 +9,7 @@ from mcp.client.stdio import stdio_client
 from wiki_mcp.server import DEFAULT_DISPLAY_TEXT, create_server
 
 
-def test_server_exposes_wiki_reads_and_inbox_only_external_notes(tmp_path: Path) -> None:
+def test_server_exposes_wiki_reads_and_raw_external_notes(tmp_path: Path) -> None:
     wiki = tmp_path / "wiki"
     wiki.mkdir()
     (wiki / "index.md").write_text(
@@ -86,14 +86,16 @@ def test_server_exposes_wiki_reads_and_inbox_only_external_notes(tmp_path: Path)
                 )
                 assert submitted.structuredContent is not None
                 assert submitted.structuredContent["status"] == "queued_for_curation"
-                assert submitted.structuredContent["path"].startswith("inbox/")
-                inbox_note = wiki / submitted.structuredContent["path"]
-                assert inbox_note.is_file()
-                assert "type: external-note" in inbox_note.read_text(encoding="utf-8")
-                assert "origin: wiki-mcp" in inbox_note.read_text(encoding="utf-8")
-                inbox_search = await client.call_tool("wiki_search", {"query": "Outside context", "include_drafts": True})
-                assert inbox_search.structuredContent is not None
-                assert inbox_search.structuredContent["total_count"] == 0
+                assert submitted.structuredContent["path"].startswith("_raw/external/")
+                raw_note = tmp_path / submitted.structuredContent["path"]
+                assert raw_note.is_file()
+                raw_text = raw_note.read_text(encoding="utf-8")
+                assert "type: external-note" in raw_text
+                assert "origin: wiki-mcp" in raw_text
+                assert "state:" not in raw_text
+                raw_search = await client.call_tool("wiki_search", {"query": "Outside context", "include_drafts": True})
+                assert raw_search.structuredContent is not None
+                assert raw_search.structuredContent["total_count"] == 0
 
                 resources = await client.list_resources()
                 assert {str(resource.uri): resource.description for resource in resources.resources} == {

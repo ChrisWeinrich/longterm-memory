@@ -4,6 +4,7 @@ type: discussion
 tags: [agents, mcp, long-term-memory, research, wiki]
 state: accepted
 created: 2026-08-12
+migrated_from: wiki/sources
 conversation:
   system: codex
   session_id: "019fe785-aded-7972-b916-e17cae78ca20"

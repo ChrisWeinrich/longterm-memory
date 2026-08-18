@@ -4,6 +4,9 @@ type: discussion
 tags: [agents, architecture, long-term-memory, wiki]
 state: draft
 created: 2026-08-12
+sources:
+  - _raw/conversations/2026-08-12--shared-core-and-specialist-agent-wikis.md
+migrated_from: wiki/sources
 ---
 
 # Gemeinsamer Wissenskern und spezialisierte Agenten-Wikis

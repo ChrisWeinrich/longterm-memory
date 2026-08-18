@@ -1,6 +1,6 @@
 ---
 title: "<research title>"
-type: research-outline
+type: research-plan
 tags: [research]
 state: draft
 created: <% tp.date.now("YYYY-MM-DD") %>

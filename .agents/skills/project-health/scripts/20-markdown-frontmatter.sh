@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Every Markdown document has the standard frontmatter and a valid state.
+# Curated Markdown documents have the standard frontmatter and a valid state.
 set -u
 
 failed=0
@@ -25,6 +25,6 @@ while IFS= read -r -d '' file; do
     draft|accepted|archived) ;;
     *) printf "ERROR: %s: invalid state '%s' (use draft, accepted, or archived)\\n" "$file" "$state" >&2; failed=1 ;;
   esac
-done < <(find . -type f -name '*.md' ! -path './.git/*' ! -path '*/.venv/*' -print0)
+done < <(find . -type f -name '*.md' ! -path './.git/*' ! -path './_raw/*' ! -path './_templates/raw-*.md' ! -path '*/.venv/*' -print0)
 
 exit "$failed"

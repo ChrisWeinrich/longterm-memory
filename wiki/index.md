@@ -7,7 +7,7 @@ state: accepted
 
 # Wiki index
 
-## Active source pages
+## Active pages
 
 <!-- The agent maintains links to source pages here. Do not list archived pages. -->
 

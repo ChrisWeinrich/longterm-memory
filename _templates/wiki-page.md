@@ -1,10 +1,10 @@
 ---
 title: "<source title>"
-type: wiki-source
+type: wiki-page
 tags: [wiki]
 state: draft
 created: <% tp.date.now("YYYY-MM-DD") %>
-source: "_raw/<source-file>"
+sources: []
 ---
 
 # <source title>

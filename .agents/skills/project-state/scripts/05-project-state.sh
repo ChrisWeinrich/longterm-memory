@@ -7,7 +7,7 @@ records=$(
     state=$(awk 'NR > 1 && $0 == "---" { exit } index($0, "state:") == 1 { print $2; exit }' "$file")
     type=$(awk 'NR > 1 && $0 == "---" { exit } index($0, "type:") == 1 { print $2; exit }' "$file")
     printf '%s\t%s\n' "${state:-invalid}" "${type:-unclassified}"
-  done < <(find . -type f -name '*.md' ! -path './.git/*' ! -path '*/.venv/*' -print)
+  done < <(find . -type f -name '*.md' ! -path './.git/*' ! -path './_raw/*' ! -path './_templates/raw-*.md' ! -path '*/.venv/*' -print)
 )
 
 count_state() {
@@ -32,6 +32,12 @@ printf 'Non-accepted:       %d\n' "$non_accepted"
 printf '%s\n' 'Document types:'
 awk -F '\t' '{ count[$2]++ } END { for (type in count) print type "\t" count[type] }' <<< "$records" | sort | while IFS=$'\t' read -r type count; do
   printf '  %s: %s\n' "$type" "$count"
+done
+
+printf '%s\n' 'Raw inputs:'
+for area in sources conversations external research; do
+  count=$(find "_raw/$area" -type f ! -name '.gitkeep' -print 2>/dev/null | awk 'END { print NR + 0 }')
+  printf '  %s: %d\n' "$area" "$count"
 done
 
 if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then

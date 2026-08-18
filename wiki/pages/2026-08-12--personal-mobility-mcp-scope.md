@@ -4,6 +4,11 @@ type: discussion
 tags: [deutsche-bahn, vvs, mobility, mcp, infrastructure]
 state: draft
 created: 2026-08-12
+sources:
+  - _raw/conversations/2026-08-12--personal-mobility-mcp-scope.md
+  - _raw/conversations/2026-08-12--local-deutsche-bahn-mcp-for-agents.md
+  - _raw/research/paulvonberg-db-mcp-server--shallow/report.md
+migrated_from: wiki/sources
 ---
 
 # Persönliches Mobility-MCP: Fahrpläne, Abfahrten und Störungen

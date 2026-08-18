@@ -16,12 +16,12 @@ while IFS= read -r -d '' page; do
   accepted=$((accepted + 1))
   name=${page##*/}
   name=${name%.md}
-  if ! grep -Fq "[[$name" wiki/index.md && ! grep -Fq "[[$page" wiki/index.md; then
+  if ! grep -Fq "[[$name]]" wiki/index.md && ! grep -Fq "[[$name|" wiki/index.md && ! grep -Fq "[[$page]]" wiki/index.md; then
     printf 'ERROR: accepted page is not linked from wiki/index.md: %s\n' "$page" >&2
     unindexed=$((unindexed + 1))
     failed=1
   fi
-done < <(find wiki/sources -type f -name '*.md' -print0 2>/dev/null)
+done < <(find wiki/pages -type f -name '*.md' -print0 2>/dev/null)
 
 printf 'Active wiki coverage: %d accepted source page(s), %d unindexed.\n' "$accepted" "$unindexed"
 exit "$failed"

@@ -15,29 +15,32 @@ it.
 ## Copier base conventions
 
 - Start with `MOC.md`, then the relevant area's `index.md`.
-- Markdown documents use `title`, `type`, `tags`, and `state` frontmatter.
-  Valid states are `draft`, `accepted`, and `archived`.
+- Curated Markdown documents use `title`, `type`, `tags`, and `state`
+  frontmatter. Valid states are `draft`, `accepted`, and `archived`.
+- Managed Raw Markdown under `_raw/` uses `title`, `type`, `tags`, `origin`,
+  and `created` or `received_at`; Raw material has no `state`.
 - Never commit secrets, local environment files, or generated caches.
 - Keep `_raw/` immutable. Only accepted pages belong in `wiki/index.md`.
 - Use the relevant skill for research, discussions, wiki maintenance, and note
   creation.
-- Run every script in `.agents/skills/project-state-health/scripts/` when
-  reporting repository state or validating repository-wide conventions. Add a
-  small, deterministic script there as this project gains new requirements.
+- Use `project-state` for a descriptive repository inventory. Use
+  `project-health` to validate repository-wide conventions and curation
+  completeness; run every script in its `scripts/` directory. Add a small,
+  deterministic health check there as this project gains new invariants.
 - For durable knowledge, first use the local Wiki MCP's `wiki_discover`,
   `wiki_index`, or `wiki_search` tools before broader filesystem search or web
   research. It exposes accepted wiki knowledge by default; drafts are
   unreviewed and require explicit opt-in.
-- The Wiki MCP may queue externally supplied context only in `wiki/inbox/` as
-  `external-note` drafts. Do not treat inbox content as knowledge; a human must
-  curate it into `wiki/sources/` before it can become accepted.
+- The Wiki MCP may queue externally supplied context only in `_raw/external/`
+  as an `external-note` without a state. Do not treat Raw input as knowledge;
+  a human must curate it into `wiki/pages/` before it can become accepted.
 - Connect genuinely related discussions, research reports, and wiki pages with
   Obsidian wikilinks. Add links when creating or materially changing knowledge;
   consider reciprocal links only when they add context and are permitted by the
   page's review state.
 - When a conversation yields durable context, confirmed decisions, a stable
-  working approach, or important open questions, proactively create a
-  reviewable discussion draft. If its relevance is unclear, propose the draft
+  working approach, or important open questions, proactively capture a Raw
+  conversation summary. If its relevance is unclear, propose the capture
   instead.
 
 ## Working in this repository
