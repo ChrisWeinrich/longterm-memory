@@ -8,14 +8,15 @@ state: accepted
 # Research workspace
 
 Create one folder per deep-research topic: `_research/<topic-slug>/`.
-Copy `research-outline.md` and `deep-research-query.md` from `_templates/` as
+Copy `research-plan.md` and `research-query.md` from `_templates/` as
 `outline.md` and `query.md`. Review and set both files to `state: accepted`
 before starting research.
 
-Fast shallow research runs directly and does not need a workspace. Completed
-reports always go to `wiki/sources/` as `draft` pages. A reviewer must change
-the state to `accepted` before a report appears in `wiki/index.md` or supports
-an authoritative wiki answer.
+Fast shallow research runs directly and does not need an outline or query.
+Completed deep and shallow reports go to `_raw/research/` without a state.
+During later curation, a report may extend an existing `wiki/pages/` page or
+support a new draft. A reviewer must accept a curated page before it appears in
+`wiki/index.md` or supports an authoritative wiki answer.
 
 ## Required host capability
 

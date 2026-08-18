@@ -9,7 +9,7 @@ state: accepted
 
 # Create note
 
-Use `_templates/standard-note.md` as the basis for every new general note.
+Use `_templates/project-note.md` as the basis for every new general note.
 
 When working through Obsidian, apply the template with Templater. When writing
 the file directly, resolve the template values before saving it:

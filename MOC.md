@@ -32,27 +32,28 @@ Obsidian and research templates for consistent Markdown documents.
 <!-- moc:path=.agents/skills -->
 
 Project skills and their workflows, discovered directly by Codex.
-`project-state-health` provides the repository-wide, extensible state and
-health report.
+`project-state` provides the descriptive inventory; `project-health` provides
+the repository-wide, extensible validation and curation check.
 
 <!-- moc:path=_mcp/wiki-mcp -->
 
-Local, read-only stdio MCP for controlled access to accepted wiki knowledge.
+Local stdio MCP for controlled access to accepted wiki knowledge and Raw
+external-note handoff.
 
 <!-- moc:path=wiki -->
 
-Curated, durable project knowledge. Start at `wiki/index.md`; published
-research reports, discussion summaries, and source pages live in
-`wiki/sources/`. `wiki/inbox/` contains unreviewed external notes awaiting
-human curation.
+Curated, durable project knowledge. Start at `wiki/index.md`; draft and
+accepted and draft pages live in `wiki/pages/`.
 
 <!-- moc:path=_raw -->
 
-Immutable original material for wiki ingestion. Read it, but never modify it.
+Immutable material awaiting curation, separated into `sources/`,
+`conversations/`, `external/`, and `research/`. Read it, but never modify it.
 
 <!-- moc:path=_research -->
 
-Deep-research workspaces. Accepted research is published to `wiki/sources/`.
+Deep-research workspaces. Outline and query approval happen here; completed
+reports are written to `_raw/research/` before later curation.
 
 ## Sources of truth
 
@@ -67,9 +68,10 @@ Deep-research workspaces. Accepted research is published to `wiki/sources/`.
 
 ## Relationships
 
-- Original material in `_raw/` is ingested into curated pages in `wiki/`.
-- Deep-research workspaces in `_research/` publish completed reports to
-  `wiki/sources/`.
+- Raw material in `_raw/` is added to an existing curated page or forms a new
+  draft in `wiki/`; curated `sources:` fields retain every used Raw path.
+- Deep-research workspaces in `_research/` create completed reports in
+  `_raw/research/`.
 - `_templates/` provides the document shapes used by research and wiki
   workflows.
 

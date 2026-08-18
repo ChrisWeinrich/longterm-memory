@@ -4,6 +4,7 @@ type: discussion
 tags: [discussion]
 state: draft
 created: <% tp.date.now("YYYY-MM-DD") %>
+sources: []
 # Add `conversation` only after verifying the reference. Do not invent IDs,
 # URLs, or paths. Example:
 # conversation:
@@ -15,15 +16,15 @@ created: <% tp.date.now("YYYY-MM-DD") %>
 
 # <discussion title>
 
-## Ausgangsfrage
+## Initial question
 
-## Konsens / aktueller Stand
+## Consensus / current state
 
-## Entscheidungen
+## Decisions
 
 Include this section only for decisions actually made or explicitly confirmed
 in the conversation.
 
-## Offene Punkte
+## Open questions
 
-## Verwandte Wiki-Seiten
+## Related Wiki pages

@@ -27,43 +27,42 @@ time, and keep each layer understandable before building the next.
 This project is an Obsidian vault with Templater configured to use
 `_templates/`. Install and enable the community plugin **Templater** in
 Obsidian once; its plugin code is intentionally not included in this
-repository. Use `_templates/standard-note.md` as the basis for general notes.
+repository. Use `_templates/project-note.md` as the basis for general notes.
 
 ## LLM Wiki
 
-The first LLM Wiki implementation is intentionally small. Put original
-material in `_raw/`; an agent summarizes it into `wiki/sources/`, maintains
-the active-page MOC in `wiki/index.md`, and records changes in `wiki/log.md`.
-Only accepted pages appear in the active MOC and support authoritative wiki
-answers; drafts remain available for review. Original sources are immutable.
-See `.agents/skills/llm-wiki/SKILL.md` for the ingest and query workflow.
+The first LLM Wiki implementation is intentionally small. All uncurated input
+starts in `_raw/`: `sources/`, `conversations/`, `external/`, or `research/`.
+An agent later adds that input to an existing `wiki/pages/` page or creates a
+new draft, maintains the active-page MOC in `wiki/index.md`, and records
+curated changes in `wiki/log.md`. Only accepted pages appear in the active MOC
+and support authoritative wiki answers; drafts remain available for review.
+Raw input is immutable. See `.agents/skills/llm-wiki/SKILL.md` for curation.
 
-Research reports and discussion summaries are separate draft document types in
-`wiki/sources/`. Agents connect genuinely related pages with Obsidian
-wikilinks;
-only a human review can make either type active, citable wiki knowledge.
+Research reports and discussion summaries begin as Raw material. During
+curation, related inputs may be combined in one Wiki draft through its
+`sources:` list. Agents connect genuinely related pages with Obsidian
+wikilinks; only a human review can make a page active, citable wiki knowledge.
 
 ## Wiki MCP
 
-This project includes a local, read-only stdio MCP under
-`_mcp/wiki-mcp/`. Start with its `wiki_discover`, `wiki_index`, or
-`wiki_search` tools when looking for durable knowledge; it exposes accepted
-pages by default and labels explicit draft results as unreviewed. See
-`_mcp/wiki-mcp/README.md` for the start command and tool overview. This MCP
-does not replace the `research` or `llm-wiki` skills.
+The generated project includes a local stdio MCP under `_mcp/wiki-mcp/`. Start
+with its `wiki_discover`, `wiki_index`, or `wiki_search` tools when looking for
+durable knowledge; it exposes accepted pages by default and labels explicit
+draft results as unreviewed. Its only write tool queues external context in
+`_raw/external/`. See `_mcp/wiki-mcp/README.md` for the start command and tool
+overview. This MCP does not replace the `research` or `llm-wiki` skills.
 
 ## Agent skills
 
 Codex discovers this project's skills directly in `.agents/skills/`.
 
-Use every script in `.agents/skills/project-state-health/scripts/` for a
-read-only repository state and consistency report. They count accepted and
-non-accepted Markdown knowledge, and verify required structure, frontmatter,
-wikilinks, the accepted-only active wiki index, raw-source ingestion coverage,
-research-workspace readiness, and external notes awaiting curation in
-`wiki/inbox/`. Add a small script there, rather than
-creating an ad-hoc manual checklist, when this project needs further
-deterministic checks or status metrics.
+Use `project-state` for a read-only inventory of accepted, draft, archived,
+and other document counts. Use `project-health` for read-only validation of
+required structure, frontmatter, wikilinks, the active wiki index, Raw-input
+curation coverage, research readiness, and legacy inbox migration. Add small
+scripts to the relevant skill rather than creating an ad-hoc manual checklist
+when this project needs more metrics or invariants.
 
 ## Template updates
 

@@ -19,9 +19,11 @@ This is a small, local-first wiki. It has three layers:
 
 When asked to ingest a file from `_raw/`:
 
-1. Read the source and check `wiki/index.md` for related pages.
-2. Create or update one page in `wiki/sources/` from
-   `_templates/wiki-source.md`. Use a stable, descriptive filename.
+1. Read the source and check `wiki/index.md` and related `wiki/pages/` pages.
+2. Create a page from `_templates/wiki-page.md` only when no existing page
+   covers the source. Otherwise update the existing relevant page. In either
+   case, add the raw path to `sources:`; one page may summarize multiple raw
+   inputs, and one raw input may support multiple pages.
 3. Keep the summary factual. Put interpretations, unanswered questions, and
    contradictions in the final section instead of presenting them as facts.
 4. Add useful Obsidian wikilinks to related wiki pages.
@@ -29,10 +31,10 @@ When asked to ingest a file from `_raw/`:
    Draft pages remain available for review but are not active wiki knowledge;
    archived pages are never indexed.
 6. Append a concise dated entry to `wiki/log.md`.
-7. Run `.agents/skills/project-state-health/scripts/50-raw-source-ingestion.sh`
-   before calling the source ingested. Resolve every reported missing or
-   duplicate mapping; each `_raw/` file needs exactly one `wiki-source` page
-   whose `source` frontmatter points to it.
+7. Run `.agents/skills/project-health/scripts/50-raw-source-ingestion.sh`
+   before calling the source ingested. Resolve every missing or invalid raw
+   reference; every curation-ready raw input needs at least one valid curated
+   `sources:` reference.
 
 ## Answer a wiki question
 

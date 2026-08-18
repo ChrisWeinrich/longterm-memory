@@ -9,9 +9,9 @@ state: accepted
 
 `wiki-mcp` is a local stdio MCP server for this project's curated Markdown
 knowledge. It reads only curated pages in `wiki/`. It never exposes `_raw/`,
-`raw/`, `inbox/`, `_research/`, local transcripts, configuration, or arbitrary
-paths. Its single write tool can only create new external-note drafts in
-`wiki/inbox/` for later human curation.
+`_research/`, local transcripts, configuration, or arbitrary paths. Its single
+write tool can only create new external-note Raw material in `_raw/external/`
+for later human curation.
 
 ## Start
 
@@ -41,10 +41,10 @@ with `copier update`.
   makes unreviewed drafts visible and labels them as such.
 - `wiki_get` loads only a server-issued document ID, never a file path; a draft
   also requires explicit `include_drafts: true`.
-- `wiki_submit_note` creates a new `type: external-note`, `state: draft` page
-  in `wiki/inbox/` only. It cannot select a path, alter existing knowledge, or
-  make content authoritative. The state-and-health check reports queued inbox
-  notes until a human curates them.
+- `wiki_submit_note` creates a new `type: external-note` Raw record in
+  `_raw/external/` only. It cannot select a path, alter existing knowledge, or
+  make content authoritative. The project-health check reports Raw entries
+  that still need a curated `sources:` reference.
 - `wiki://index`, `wiki://schema`, and `wiki://log` provide the active index,
   authority policy, and maintenance log.
 

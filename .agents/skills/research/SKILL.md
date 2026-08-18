@@ -1,6 +1,6 @@
 ---
 name: research
-description: Plan accepted deep research or run a fast shallow search with verified web search and URL retrieval, then publish a reviewable report into the wiki.
+description: Plan accepted deep research or run a fast shallow search with verified web search and URL retrieval, then save the result as raw material for later wiki curation.
 title: Research workflow
 type: skill
 tags: [research]
@@ -23,36 +23,35 @@ invent sources or treat inaccessible search results as verified evidence.
 ## Deep research
 
 1. Create `_research/<topic-slug>/`.
-2. Copy `_templates/research-outline.md` to `outline.md` and
-   `_templates/deep-research-query.md` to `query.md`.
+2. Copy `_templates/research-plan.md` to `outline.md` and
+   `_templates/research-query.md` to `query.md`.
 3. Fill both files. Do not start research unless both have `state: accepted`.
    If either is `draft`, stop and say which file needs review.
 4. Research in this order: original or official sources and primary data;
    peer-reviewed research; reputable secondary analysis for context.
-5. Copy `_templates/research-report.md` to
-   `wiki/sources/YYYY-MM-DD--<topic-slug>.md` and complete it. Keep its state
-   as `draft` for review. Include source URLs, publication dates when
+5. Copy `_templates/raw-research-report.md` to
+   `_raw/research/<topic-slug>/report.md` and complete it. Keep it as raw
+   material without `state`. Include source URLs, publication dates when
    available, uncertainty, and clearly label inference.
-6. Log the draft as described below. It is not an active wiki page until a
-   reviewer changes its state to `accepted`.
 
 ## Fast shallow research
 
 Run it directly without an outline or query. Write the result to
-`wiki/sources/YYYY-MM-DD--<topic-slug>--shallow.md` with `type:
-shallow-research` and `state: draft`. Use the same source-quality rules and
-include a short sources section. Log the draft as described below. It is not
-an active wiki page until a reviewer changes its state to `accepted`.
+`_raw/research/<topic-slug>--shallow/report.md` from
+`_templates/raw-research-report.md`; use `type: raw-research-report` and no
+`state`. Use the same source-quality rules and include a short sources section.
 
-## Publish a report into the wiki
+## Curate a report into the wiki
 
-Every completed research report in `wiki/sources/` is logged, whether it is
-deep or shallow research:
+Every completed Raw research report is curated later, whether it is deep or
+shallow research:
 
-1. Check `wiki/index.md` for related pages and add useful Obsidian wikilinks to
-   the report.
-2. Add the report to `wiki/index.md` only after its state is `accepted`.
-   Draft reports remain unindexed until review; archived reports are never
-   indexed.
-3. Append a concise dated entry to `wiki/log.md`, identifying a draft as
-   pending review.
+1. Check `wiki/index.md` and related `wiki/pages/` pages. Add the raw report
+   path to an existing page's `sources:` list when it genuinely extends that
+   knowledge; otherwise copy `_templates/wiki-research-report.md` to a new page in
+   `wiki/pages/`, set `sources:` to the raw report path, and keep
+   `state: draft`.
+2. Add a page to `wiki/index.md` only after its state is `accepted`. Draft
+   reports remain unindexed until review; archived reports are never indexed.
+3. Append a concise dated entry to `wiki/log.md` when a curated draft is
+   created or materially updated.

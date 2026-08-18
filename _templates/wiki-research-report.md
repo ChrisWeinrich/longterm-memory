@@ -4,6 +4,7 @@ type: research-report
 tags: [research]
 state: draft
 created: <% tp.date.now("YYYY-MM-DD") %>
+sources: []
 ---
 
 # <research title>

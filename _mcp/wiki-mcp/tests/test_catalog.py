@@ -26,7 +26,7 @@ def test_catalog_only_reads_valid_markdown_inside_allowed_directories(tmp_path: 
 
 
 def test_document_ids_are_deterministic_and_snippets_are_compact(tmp_path: Path) -> None:
-    write_page(tmp_path, "sources/one.md", body="A long explanation about controlled MCP reading.")
+    write_page(tmp_path, "pages/one.md", body="A long explanation about controlled MCP reading.")
     first = documents(tmp_path)[0]
     second = documents(tmp_path)[0]
 
