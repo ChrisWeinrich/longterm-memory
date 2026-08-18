@@ -1,23 +1,26 @@
 ---
-title: "Personal Long-Term Memory"
+title: "Kustos"
 type: project
 tags: [ai-assistant]
 state: accepted
 project_slug: "personal-long-term-memory"
 ---
 
-# Personal Long-Term Memory
+# Kustos
 
-A curated, local-first long-term memory for my assistants, research, decisions, and durable personal knowledge.
+A curated, local-first long-term memory for my assistants, research, decisions,
+and durable personal knowledge. Kustos is the general knowledge keeper: the
+shared, reviewed memory for information that may be useful across assistants.
 
 ## Start here
 
-This vault is the durable memory layer for Christian's assistants. It captures
-reviewed personal context, decisions, research, and working conventions in
-plain Markdown, so the knowledge remains inspectable and useful independent of
-any one assistant or tool. Keep it deliberately small: add one clear
-capability at a time, and keep each layer understandable before building the
-next.
+This vault is the durable, general memory layer for Christian's assistants. It
+captures reviewed personal context, decisions, research, and working
+conventions in plain Markdown, so the knowledge remains inspectable and useful
+independent of any one assistant or tool. Specialized assistants may maintain
+their own bounded knowledge spaces; only explicitly shared, reviewed knowledge
+belongs in Kustos. Keep it deliberately small: add one clear capability at a
+time, and keep each layer understandable before building the next.
 
 ## Obsidian
 
