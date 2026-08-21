@@ -2,7 +2,7 @@
 title: "External deployment strategy"
 type: wiki-page
 tags: [infrastructure, deployment, github-actions, tailscale, docker-compose]
-state: draft
+state: accepted
 created: 2026-08-18
 sources:
   - "_raw/conversations/2026-08-18--atlas-tailscale-and-external-deploy-control.md"

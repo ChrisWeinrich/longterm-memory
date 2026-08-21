@@ -2,7 +2,7 @@
 title: "Logging and observability architecture"
 type: wiki-page
 tags: [infrastructure, observability, logging, monitoring, alerting]
-state: draft
+state: accepted
 created: 2026-08-18
 sources:
   - "_raw/research/central-logging-stack--shallow/report.md"

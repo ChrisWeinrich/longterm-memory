@@ -2,7 +2,7 @@
 title: "Target network and operations topology"
 type: wiki-page
 tags: [infrastructure, network, topology, tailscale, cloud, observability]
-state: draft
+state: accepted
 created: 2026-08-18
 sources:
   - "_raw/conversations/2026-08-18--home-network-topology-first.md"

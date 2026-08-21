@@ -13,3 +13,5 @@ state: accepted
 - 2026-08-18: Created draft [[logging-and-observability-architecture]] from the central logging research.
 - 2026-08-18: Created draft [[external-deployment-strategy]] from the deployment-control and network-topology discussion.
 - 2026-08-18: Updated draft [[target-network-and-operations-topology]] with topology-before-workload-inventory ordering.
+- 2026-08-18: Accepted and indexed the target topology, logging/observability,
+  and external deployment strategy pages.
