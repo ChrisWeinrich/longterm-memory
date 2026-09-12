@@ -15,3 +15,12 @@ state: accepted
 - 2026-08-18: Updated draft [[target-network-and-operations-topology]] with topology-before-workload-inventory ordering.
 - 2026-08-18: Accepted and indexed the target topology, logging/observability,
   and external deployment strategy pages.
+- 2026-08-21: Created draft [[personal-finance-market-dashboard]] from deep
+  research into portfolio tools, market and bond data, build-versus-buy, and
+  a privacy-conscious implementation path.
+- 2026-08-22: Created draft [[playstation-plus-extra]] from a shallow research
+  into the current Germany catalogue, benefits, and value of the Extra tier.
+- 2026-08-24: Created draft [[ludwigsburg-gates-fahrradwerkstaetten]] from a
+  shallow research into local workshops suitable for Gates belt-drive service.
+- 2026-08-26: Created draft [[dotnet-transitive-query-api]] from a shallow
+  research into GraphQL, OData, and controlled relational query APIs on .NET.
