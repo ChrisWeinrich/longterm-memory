@@ -37,3 +37,9 @@ state: accepted
 - 2026-09-12: Created draft [[herdr-coding-agent-runtime]] from cited deep
   research into Herdr's coding-agent runtime, controls, and documentation.
 - 2026-09-12: Accepted and indexed [[herdr-coding-agent-runtime]].
+- 2026-09-12: Created draft [[cli-tool-discovery-watchlist]] from cited shallow
+  research into CLI/TUI and coding-agent discovery sources.
+- 2026-09-12: Accepted and indexed [[cli-tool-discovery-watchlist]].
+- 2026-09-12: Created draft [[oh-my-hi-and-agent-configuration-dashboard-options]]
+  from the upstream oh-my-hi capability snapshot and the agent-configuration
+  dashboard research.

@@ -19,6 +19,8 @@ state: accepted
   deployment control.
 - [[herdr-coding-agent-runtime]] — persistent coding-agent runtime, its
   operational boundaries, and official reference links.
+- [[cli-tool-discovery-watchlist]] — vetted starting points for finding CLI,
+  TUI, and coding-agent tools.
 
 ## Open questions and contradictions
 
