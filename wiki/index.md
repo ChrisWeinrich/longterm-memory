@@ -21,6 +21,8 @@ state: accepted
   operational boundaries, and official reference links.
 - [[cli-tool-discovery-watchlist]] — vetted starting points for finding CLI,
   TUI, and coding-agent tools.
+- [[tui-agent-environment-control-plane]] — accepted target composition and
+  trial gates for supervising a multi-repository agent fleet.
 
 ## Open questions and contradictions
 

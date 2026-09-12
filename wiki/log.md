@@ -43,3 +43,5 @@ state: accepted
 - 2026-09-12: Created draft [[oh-my-hi-and-agent-configuration-dashboard-options]]
   from the upstream oh-my-hi capability snapshot and the agent-configuration
   dashboard research.
+- 2026-09-12: Accepted and indexed [[tui-agent-environment-control-plane]] from
+  deep research into a private Codex-first agent supervision environment.
