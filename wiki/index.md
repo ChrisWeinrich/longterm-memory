@@ -17,6 +17,8 @@ state: accepted
   alerting design.
 - [[external-deployment-strategy]] — external GitHub Actions and Tailscale
   deployment control.
+- [[herdr-coding-agent-runtime]] — persistent coding-agent runtime, its
+  operational boundaries, and official reference links.
 
 ## Open questions and contradictions
 

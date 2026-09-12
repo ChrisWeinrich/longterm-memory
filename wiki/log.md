@@ -34,3 +34,6 @@ state: accepted
   [[kustos-agent-runtime-and-research-boundary]],
   [[financial-system-foundations]], [[personal-finance-market-foundations]],
   and [[ludwigsburg-leihrad-app]] from previously uncurated Raw material.
+- 2026-09-12: Created draft [[herdr-coding-agent-runtime]] from cited deep
+  research into Herdr's coding-agent runtime, controls, and documentation.
+- 2026-09-12: Accepted and indexed [[herdr-coding-agent-runtime]].
