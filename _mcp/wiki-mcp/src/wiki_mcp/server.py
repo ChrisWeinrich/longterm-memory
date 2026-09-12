@@ -19,10 +19,12 @@ from .catalog import VALID_STATES, WikiError, by_state, document_summary, docume
 
 DEFAULT_DISPLAY_TEXT = {
     "handshake": (
-        "Use this read-only MCP to find curated project knowledge. Start with wiki_discover or wiki_index, "
-        "then search and retrieve only the context you need. Accepted pages are authoritative; drafts require "
-        "explicit opt-in and are always unreviewed."
+        "Use this MCP to orient yourself in the project and find curated knowledge. When you do not know where "
+        "to start, call wiki_get_moc first. Then use wiki_discover or wiki_index, and search and retrieve only "
+        "the context you need. Accepted Wiki pages are authoritative; drafts require explicit opt-in and are "
+        "always unreviewed."
     ),
+    "wiki_get_moc": "Get the repository Map of Context; use this first when you need project orientation.",
     "wiki_discover": "Describe the current wiki policy, document types, tags, and collections.",
     "wiki_index": "Return the active wiki index and compact metadata for accepted pages.",
     "wiki_search": "Search allowed wiki content with simple, explainable case-insensitive text matching.",
@@ -109,6 +111,27 @@ def create_server(config_path: Path) -> FastMCP:
 
     def catalog() -> list:
         return documents(wiki_root)
+
+    @mcp.tool(
+        name="wiki_get_moc",
+        description=text["wiki_get_moc"],
+        annotations=annotations,
+    )
+    def wiki_get_moc() -> dict[str, str]:
+        """Get the repository Map of Context for project orientation."""
+        project_root = wiki_root.parent.resolve()
+        moc_path = (project_root / "MOC.md").resolve()
+        try:
+            moc_path.relative_to(project_root)
+        except ValueError as error:
+            raise WikiError("MOC.md must resolve inside the project root.") from error
+        if not moc_path.is_file():
+            raise WikiError("MOC.md is missing. Restore the repository Map of Context before using this tool.")
+        try:
+            content = moc_path.read_text(encoding="utf-8")
+        except OSError as error:
+            raise WikiError("Could not read MOC.md. Check its permissions and encoding.") from error
+        return {"path": "MOC.md", "content": content}
 
     @mcp.tool(
         name="wiki_discover",

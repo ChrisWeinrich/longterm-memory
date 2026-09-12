@@ -10,6 +10,10 @@ from wiki_mcp.server import DEFAULT_DISPLAY_TEXT, create_server
 
 
 def test_server_exposes_wiki_reads_and_raw_external_notes(tmp_path: Path) -> None:
+    (tmp_path / "MOC.md").write_text(
+        "---\ntitle: Project map\ntype: moc\ntags: [project]\nstate: accepted\n---\n\n# Project map\n",
+        encoding="utf-8",
+    )
     wiki = tmp_path / "wiki"
     wiki.mkdir()
     (wiki / "index.md").write_text(
@@ -29,6 +33,7 @@ def test_server_exposes_wiki_reads_and_raw_external_notes(tmp_path: Path) -> Non
     text_config = {
         **DEFAULT_DISPLAY_TEXT,
         "handshake": "Use the configured project Wiki MCP first.",
+        "wiki_get_moc": "Get this project's map of context.",
         "wiki_search": "Search this configured knowledge base.",
     }
     (tmp_path / "wiki-mcp.texts.json").write_text(json.dumps(text_config), encoding="utf-8")
@@ -47,12 +52,17 @@ def test_server_exposes_wiki_reads_and_raw_external_notes(tmp_path: Path) -> Non
                 initialized = await client.initialize()
                 assert initialized.instructions is not None
                 assert initialized.instructions == "Use the configured project Wiki MCP first."
+                moc = await client.call_tool("wiki_get_moc", {})
+                assert moc.structuredContent is not None
+                assert moc.structuredContent["path"] == "MOC.md"
+                assert "# Project map" in moc.structuredContent["content"]
                 discovered = await client.call_tool("wiki_discover", {})
                 assert discovered.structuredContent is not None
                 assert discovered.structuredContent["root"] == "wiki/"
 
                 tools = await client.list_tools()
                 assert {tool.name: tool.description for tool in tools.tools} == {
+                    "wiki_get_moc": text_config["wiki_get_moc"],
                     "wiki_discover": text_config["wiki_discover"],
                     "wiki_index": text_config["wiki_index"],
                     "wiki_search": text_config["wiki_search"],

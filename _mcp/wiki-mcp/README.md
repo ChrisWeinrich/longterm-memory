@@ -35,6 +35,7 @@ with `copier update`.
 
 ## Tools and resources
 
+- `wiki_get_moc` returns the repository's `MOC.md` for project orientation.
 - `wiki_discover` shows the policy plus current document types and tags.
 - `wiki_index` returns `wiki/index.md` and accepted page metadata.
 - `wiki_search` searches accepted pages by default; `include_drafts: true`
@@ -48,6 +49,7 @@ with `copier update`.
 - `wiki://index`, `wiki://schema`, and `wiki://log` provide the active index,
   authority policy, and maintenance log.
 
-Start with `wiki_discover` or `wiki_index`, then use `wiki_search` and
-`wiki_get`. Use `wiki_submit_note` only to hand external context into the
-curation queue. The MCP does not replace the `research` or `llm-wiki` skills.
+When you need project orientation, start with `wiki_get_moc`. Otherwise start
+with `wiki_discover` or `wiki_index`, then use `wiki_search` and `wiki_get`.
+Use `wiki_submit_note` only to hand external context into the curation queue.
+The MCP does not replace the `research` or `llm-wiki` skills.
