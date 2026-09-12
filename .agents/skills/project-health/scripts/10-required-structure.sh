@@ -4,6 +4,7 @@ set -u
 
 failed=0
 for path in README.md AGENTS.md MOC.md .copier-answers.yml .agents/skills \
+  _context \
   _templates _raw _raw/sources _raw/conversations _raw/external _raw/research \
   _research wiki wiki/pages wiki/index.md wiki/log.md; do
   if [[ ! -e "$path" ]]; then

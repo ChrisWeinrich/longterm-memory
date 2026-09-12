@@ -1,15 +1,15 @@
 ---
 name: discussion
 description: Capture relevant conversations as raw material for later wiki curation. Use when the user asks to discuss, capture an outcome, record a decision, or save a conversation summary; also use proactively when a conversation establishes durable context, confirmed decisions, stable working practices, or important open questions.
-title: Discussion workflow
+title: Kustos discussion workflow
 type: skill
 tags: [discussion, wiki]
 state: accepted
 ---
 
-# Discussion workflow
+# Kustos discussion workflow
 
-Capture durable outcomes from a conversation without treating a transcript or
+Capture durable Kustos outcomes from a conversation without treating a transcript or
 unreviewed interpretation as authoritative knowledge. The result starts as raw
 material and is curated into a reviewable wiki draft only later.
 

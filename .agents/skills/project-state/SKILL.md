@@ -1,13 +1,13 @@
 ---
 name: project-state
-description: Report the current descriptive state of a rendered AI-assistant repository. Use when asked for repository or vault status, counts of accepted, draft, archived, or non-accepted documents, document-type totals, or uncommitted-path counts. This skill reports facts; use project-health separately to validate correctness and curation completeness.
-title: Project state
+description: Report Kustos's current descriptive state, including foundation documentation and curated Wiki knowledge. Use when asked for repository or Wiki status, counts of accepted, draft, archived, or non-accepted documents, document-type totals, or uncommitted-path counts. This skill reports facts; use project-health separately to validate correctness and curation completeness.
+title: Kustos state
 type: skill
 tags: [state, reporting, wiki]
 state: accepted
 ---
 
-# Project state
+# Kustos state
 
 Run every script in this skill's `scripts/` directory from the repository root:
 
@@ -18,9 +18,11 @@ for report in .agents/skills/project-state/scripts/*.sh; do
 done
 ```
 
-Report the output as a compact inventory. It describes the repository as it is;
-it does not determine whether that state is correct, healthy, or ready for
-curation. Run `project-health` when the user needs that judgment.
+Report the output as a compact Kustos inventory of foundation documentation and
+curated Wiki knowledge. Project-local domain artifacts may have their own
+schemas, so add a project-specific read-only report for their metrics. This
+skill does not determine whether the reported state is correct, healthy, or
+ready for curation. Run `project-health` when the user needs that judgment.
 
 ## Extend it
 

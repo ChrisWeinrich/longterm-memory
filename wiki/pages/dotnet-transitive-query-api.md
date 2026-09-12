@@ -6,33 +6,35 @@ state: draft
 created: 2026-08-26
 sources:
   - "_raw/research/dotnet-transitive-query-api--shallow/report.md"
+  - "_raw/conversations/2026-08-26--filter-metadata-model-first.md"
+  - "_raw/conversations/2026-08-26--metadata-driven-relational-query-builder.md"
 ---
 
 # .NET: variable Query-API über Entitätsbeziehungen
 
 ## Conclusion
 
-Für eine Hauptentität mit frei wählbaren Feldern und Filtern über mehrere
-FK-/Navigationsstufen ist **GraphQL mit Hot Chocolate auf EF Core** die beste
-Standardlösung. Der Client wählt die Rückgabeform; Hot Chocolate liefert
-generierte, typsichere Filter für verschachtelte Objekte und Collections und
-übersetzt sie für `IQueryable`.
+Für das beschriebene Backend ist der nächste Baustein ein Metadatenmodell für
+Filter- und Anzeigefelder. Es löst stabile UI-Feldschlüssel gegen erlaubte
+relationale Pfade, Operatoren und Projektionen auf; erst danach kompiliert ein
+kontrollierter EF-Core-Query-Builder die Abfrage.
 
-**OData 8** ist die passende REST-Alternative, wenn `$filter`, `$select` und
-`$expand` als standardisierte URL-Sprache erwünscht sind. Eine eigene
-JSON-Filter-DSL erst bauen, wenn die erlaubten Suchszenarien fachlich eng und
-stabil sind.
+GraphQL mit Hot Chocolate und OData 8 bleiben Alternativen, falls das Produkt
+eine allgemeine externe Query-Sprache benötigt. Die bestätigte Projektentscheidung
+ist jedoch, zuerst die eigene, fachlich begrenzte Metadaten- und Query-Schicht
+zu entwerfen.
 
 ## Evidence
 
 | Wahl | Wann |
 | --- | --- |
+| Metadatenmodell + eigene DSL | stabile Feldschlüssel, Allowlist und fachlich begrenzte Suche |
 | Hot Chocolate GraphQL | neues UI, variable Datenansichten, mehrere relationale Ebenen |
 | ASP.NET Core OData 8 | REST-Clients, URL-basierte Query-Sprache, bekannte Standards |
-| eigene DSL | feste, bewusst begrenzte Suche und keine externe Query-Sprache |
 
-Beide fertigen Optionen unterstützen Feldselektion, relationale Ausgabe,
-Filterung, Sortierung und Paging. EF Core bleibt darunter die
+Die UI übermittelt keine Datenbankpfade, SQL oder freie LINQ-Ausdrücke. Das
+Backend erzwingt Mandanten- und Zeilenrechte, validiert die Feldkonfiguration
+und begrenzt Navigationstiefe, Paging und Kosten. EF Core bleibt darunter die
 Datenzugriffsschicht, nicht die Query-Sprache für Clients.
 
 ## Trade-offs and risks
@@ -47,11 +49,12 @@ unendliche Rekursion über den gesamten Graphen.
 
 ## Open questions
 
-Entscheidend für die konkrete Wahl sind API-Kunden, DB/EF-Core-Version,
-Berechtigungen und ob Abfragepfade wirklich ad hoc oder nur konfigurierbar sein
-sollen.
+Offen sind insbesondere Wiederverwendung der Felddefinitionen je Root-Entity,
+Collection-Semantik (`Any`/`All`), Version-1-Operatoren und das Rückgabeformat
+für dynamische Spalten.
 
 ## Sources
 
 - [[_raw/research/dotnet-transitive-query-api--shallow/report]]
-
+- [[_raw/conversations/2026-08-26--filter-metadata-model-first]]
+- [[_raw/conversations/2026-08-26--metadata-driven-relational-query-builder]]

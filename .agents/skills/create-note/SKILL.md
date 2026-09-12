@@ -1,15 +1,15 @@
 ---
 name: create-note
 description: Create a new Markdown note from the vault's standard Obsidian frontmatter template.
-title: Create note
+title: Kustos note workflow
 type: skill
 tags: [obsidian, notes]
 state: accepted
 ---
 
-# Create note
+# Kustos note workflow
 
-Use `_templates/project-note.md` as the basis for every new general note.
+Use `_templates/project-note.md` as the basis for every new general Kustos note.
 
 When working through Obsidian, apply the template with Templater. When writing
 the file directly, resolve the template values before saving it:

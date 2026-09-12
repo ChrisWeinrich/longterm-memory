@@ -24,3 +24,13 @@ state: accepted
   shallow research into local workshops suitable for Gates belt-drive service.
 - 2026-08-26: Created draft [[dotnet-transitive-query-api]] from a shallow
   research into GraphQL, OData, and controlled relational query APIs on .NET.
+- 2026-09-12: Updated draft [[dotnet-transitive-query-api]] with the confirmed
+  metadata-first query-builder direction and its conversation sources.
+- 2026-09-12: Updated draft [[ludwigsburg-gates-fahrradwerkstaetten]] with the
+  earlier Gates-service search and its explicit verification caveat.
+- 2026-09-12: Updated draft [[personal-finance-market-dashboard]] with its
+  related financial-market foundations source.
+- 2026-09-12: Created drafts [[chezmoi-ai-configuration-architecture]],
+  [[kustos-agent-runtime-and-research-boundary]],
+  [[financial-system-foundations]], [[personal-finance-market-foundations]],
+  and [[ludwigsburg-leihrad-app]] from previously uncurated Raw material.

@@ -5,13 +5,19 @@ tags: [mcp, wiki, agents]
 state: accepted
 ---
 
-# Wiki MCP
+# Kustos Wiki MCP
 
-`wiki-mcp` is a local stdio MCP server for this project's curated Markdown
-knowledge. It reads only curated pages in `wiki/`. It never exposes `_raw/`,
-`_research/`, local transcripts, configuration, or arbitrary paths. Its single
-write tool can only create new external-note Raw material in `_raw/external/`
-for later human curation.
+`wiki-mcp` is Kustos's local stdio MCP server for this project's map and curated
+Markdown knowledge. Its dedicated orientation tool reads only the repository
+`MOC.md`; its Wiki tools read only curated pages in `wiki/`. It never exposes
+`_raw/`, `_research/`, local transcripts, configuration, or arbitrary paths.
+Its single write tool can only create new external-note Raw material in
+`_raw/external/` for later human curation.
+
+Project-local artifact directories are also outside this interface. They can
+remain Git-tracked and visible in Obsidian with a project-specific schema, but
+they become MCP-readable only when reviewed knowledge is deliberately curated
+into `wiki/`.
 
 ## Start
 
@@ -35,7 +41,8 @@ with `copier update`.
 
 ## Tools and resources
 
-- `wiki_get_moc` returns the repository's `MOC.md` for project orientation.
+- `wiki_get_moc` returns the repository `MOC.md`. Start here when the task is
+  unclear or you need to understand the project’s areas and sources of truth.
 - `wiki_discover` shows the policy plus current document types and tags.
 - `wiki_index` returns `wiki/index.md` and accepted page metadata.
 - `wiki_search` searches accepted pages by default; `include_drafts: true`
@@ -49,7 +56,7 @@ with `copier update`.
 - `wiki://index`, `wiki://schema`, and `wiki://log` provide the active index,
   authority policy, and maintenance log.
 
-When you need project orientation, start with `wiki_get_moc`. Otherwise start
-with `wiki_discover` or `wiki_index`, then use `wiki_search` and `wiki_get`.
+Start with `wiki_get_moc` when you need project orientation, then use
+`wiki_discover` or `wiki_index`, followed by `wiki_search` and `wiki_get`.
 Use `wiki_submit_note` only to hand external context into the curation queue.
-The MCP does not replace the `research` or `llm-wiki` skills.
+The MCP does not replace the `research`, `llm-wiki`, or `moc` skills.

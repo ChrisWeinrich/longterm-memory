@@ -6,6 +6,7 @@ state: draft
 created: 2026-08-21
 sources:
   - "_raw/research/personal-finance-market-dashboard/report.md"
+  - "_raw/research/personal-finance-market-foundations/report.md"
 ---
 
 # Persönliches Finanz- und Marktdaten-Dashboard
@@ -177,7 +178,6 @@ Vollständige Evidenz, Preisstand, Primärquellen und Einzelbewertungen:
 
 - [[_raw/research/personal-finance-market-dashboard/report]]
 
-Verwandtes, noch unkuratiertes Grundlagenmaterial:
+Verwandtes Grundlagenmaterial:
 
-- [[_raw/research/personal-finance-market-foundations/report]]
-
+- [[personal-finance-market-foundations]]

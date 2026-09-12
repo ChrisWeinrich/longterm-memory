@@ -1,15 +1,15 @@
 ---
 name: llm-wiki
 description: Maintain a small, local Markdown wiki from immutable sources.
-title: LLM Wiki
+title: Kustos Wiki curation
 type: skill
 tags: [wiki, research]
 state: accepted
 ---
 
-# LLM Wiki
+# Kustos Wiki curation
 
-This is a small, local-first wiki. It has three layers:
+Kustos is a small, local-first wiki with three layers:
 
 - `_raw/`: original material for first ingest. Read it, but never modify it.
 - `wiki/`: agent-maintained Markdown pages. This is the working knowledge.

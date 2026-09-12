@@ -6,6 +6,7 @@ state: draft
 created: 2026-08-24
 sources:
   - "_raw/research/ludwigsburg-gates-fahrradwerkstaetten--shallow/report.md"
+  - "_raw/research/ludwigsburg-gates-riemenwerkstatt--shallow/report.md"
 ---
 
 # Fahrradwerkstätten für Gates-Riemenantrieb rund um Ludwigsburg
@@ -14,9 +15,10 @@ sources:
 
 Für Gates-Riemen und Riemenscheiben muss das Fahrrad nicht zwingend zur Marke.
 Wichtig sind Gates-Erfahrung, korrekte Ersatzteile, Fluchtung und
-Riemenspannung. Die besten lokalen Erstkontakte sind **Bikesnboards
-Ludwigsburg** und **Fahrradhaus Winter**: Beide haben eine Werkstatt und führen
-nachweislich Gates-Räder.
+Riemenspannung. Bikesnboards Ludwigsburg und Fahrradhaus Winter sind sinnvolle
+Erstkontakte, weil sie Werkstätten betreiben und Gates-Räder führen. Die ältere
+Schnellsuche belegte jedoch keine ausdrückliche Gates-Spezialisierung; die
+konkrete Arbeit am jeweiligen Antrieb muss vor der Buchung bestätigt werden.
 
 ## Evidence
 
@@ -42,4 +44,4 @@ welche Teile und welche Spezialkenntnis tatsächlich nötig sind.
 ## Sources
 
 - [[_raw/research/ludwigsburg-gates-fahrradwerkstaetten--shallow/report]]
-
+- [[_raw/research/ludwigsburg-gates-riemenwerkstatt--shallow/report]]

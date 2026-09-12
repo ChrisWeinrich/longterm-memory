@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-# Compact, read-only inventory of the rendered project's Markdown knowledge.
+# Compact, read-only inventory of foundation documentation and curated Wiki
+# knowledge. Project-local domain artifacts report through project-specific
+# scripts because they may use a different schema.
 set -u
 
 records=$(
@@ -7,7 +9,10 @@ records=$(
     state=$(awk 'NR > 1 && $0 == "---" { exit } index($0, "state:") == 1 { print $2; exit }' "$file")
     type=$(awk 'NR > 1 && $0 == "---" { exit } index($0, "type:") == 1 { print $2; exit }' "$file")
     printf '%s\t%s\n' "${state:-invalid}" "${type:-unclassified}"
-  done < <(find . -type f -name '*.md' ! -path './.git/*' ! -path './_raw/*' ! -path './_templates/raw-*.md' ! -path '*/.venv/*' -print)
+  done < <(
+    find README.md AGENTS.md MOC.md wiki _research _mcp/wiki-mcp/README.md \
+      -type f -name '*.md' ! -path '*/.venv/*' -print
+  )
 )
 
 count_state() {
@@ -21,8 +26,8 @@ archived=$(count_state archived)
 invalid=$((total - accepted - draft - archived))
 non_accepted=$((total - accepted))
 
-printf '%s\n' 'Project state'
-printf '%s\n' '-------------'
+printf '%s\n' 'Foundation knowledge state'
+printf '%s\n' '------------------------'
 printf 'Markdown documents: %d\n' "$total"
 printf 'Accepted:           %d\n' "$accepted"
 printf 'Draft:              %d\n' "$draft"

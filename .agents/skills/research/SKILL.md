@@ -1,15 +1,15 @@
 ---
 name: research
 description: Plan accepted deep research or run a fast shallow search with verified web search and URL retrieval, then save the result as raw material for later wiki curation.
-title: Research workflow
+title: Kustos research workflow
 type: skill
 tags: [research]
 state: accepted
 ---
 
-# Research workflow
+# Kustos research workflow
 
-Use this repository's research workflow. Keep research focused, cited, and
+Use Kustos's research workflow. Keep research focused, cited, and
 small enough to review.
 
 ## Required capability

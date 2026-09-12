@@ -28,6 +28,12 @@ def test_server_exposes_wiki_reads_and_raw_external_notes(tmp_path: Path) -> Non
         "---\ntitle: Draft\ntype: note\ntags: [wiki]\nstate: draft\n---\n\n# Draft\n",
         encoding="utf-8",
     )
+    private_record = tmp_path / "records" / "private.md"
+    private_record.parent.mkdir()
+    private_record.write_text(
+        "---\ntitle: Private\ntype: record\ntags: [private]\nstate: accepted\n---\n\nPrivate health record.\n",
+        encoding="utf-8",
+    )
     config = tmp_path / "wiki-mcp.config.yaml"
     config.write_text("wiki_root: wiki\n", encoding="utf-8")
     text_config = {
@@ -106,6 +112,10 @@ def test_server_exposes_wiki_reads_and_raw_external_notes(tmp_path: Path) -> Non
                 raw_search = await client.call_tool("wiki_search", {"query": "Outside context", "include_drafts": True})
                 assert raw_search.structuredContent is not None
                 assert raw_search.structuredContent["total_count"] == 0
+
+                private_search = await client.call_tool("wiki_search", {"query": "Private health record"})
+                assert private_search.structuredContent is not None
+                assert private_search.structuredContent["total_count"] == 0
 
                 resources = await client.list_resources()
                 assert {str(resource.uri): resource.description for resource in resources.resources} == {

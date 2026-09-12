@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-# Wikilinks resolve to an existing Markdown page by path or filename.
+# Foundation documentation and curated Wiki wikilinks resolve to an existing
+# Markdown page by path or filename. Project-local domain artifacts may define
+# their own link conventions and validation.
 set -u
 
 link_exists() {
@@ -22,6 +24,9 @@ while IFS= read -r -d '' file; do
       failed=1
     fi
   done < <(grep -oE '\[\[[^]]+\]\]' "$file" 2>/dev/null | sed -E 's/^\[\[//; s/\]\]$//')
-done < <(find . -type f -name '*.md' ! -path './.git/*' ! -path '*/.venv/*' -print0)
+done < <(
+  find README.md AGENTS.md MOC.md wiki _research _mcp/wiki-mcp/README.md \
+    -type f -name '*.md' ! -path '*/.venv/*' -print0
+)
 
 exit "$failed"

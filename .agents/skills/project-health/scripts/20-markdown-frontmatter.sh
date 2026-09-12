@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Curated Markdown documents have the standard frontmatter and a valid state.
+# Foundation documentation and curated Wiki pages have the standard frontmatter
+# and a valid state. Project-local domain artifacts define their own schemas.
 set -u
 
 failed=0
@@ -25,6 +26,9 @@ while IFS= read -r -d '' file; do
     draft|accepted|archived) ;;
     *) printf "ERROR: %s: invalid state '%s' (use draft, accepted, or archived)\\n" "$file" "$state" >&2; failed=1 ;;
   esac
-done < <(find . -type f -name '*.md' ! -path './.git/*' ! -path './_raw/*' ! -path './_templates/raw-*.md' ! -path '*/.venv/*' -print0)
+done < <(
+  find README.md AGENTS.md MOC.md wiki _research _mcp/wiki-mcp/README.md \
+    -type f -name '*.md' ! -path '*/.venv/*' -print0
+)
 
 exit "$failed"
