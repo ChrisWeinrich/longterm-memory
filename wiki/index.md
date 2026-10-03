@@ -23,6 +23,10 @@ state: accepted
   TUI, and coding-agent tools.
 - [[tui-agent-environment-control-plane]] — accepted target composition and
   trial gates for supervising a multi-repository agent fleet.
+- [[deterministic-agent-coding-control-plane]] — cloud-first GitHub control
+  plane for bounded coding-agent work, verification, and safe delivery.
+- [[openhands-coding-agent-platform]] — local/provider-neutral coding-agent
+  worker platform and its boundary against deterministic control.
 
 ## Open questions and contradictions
 

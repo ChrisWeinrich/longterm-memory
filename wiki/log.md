@@ -45,3 +45,15 @@ state: accepted
   dashboard research.
 - 2026-09-12: Accepted and indexed [[tui-agent-environment-control-plane]] from
   deep research into a private Codex-first agent supervision environment.
+- 2026-09-13: Created draft [[openhands-coding-agent-platform]] from deep
+  research into OpenHands capabilities, local Go-task integration, security
+  boundaries, and alternatives.
+- 2026-09-13: Accepted and indexed [[openhands-coding-agent-platform]], with
+  OpenHands deferred behind the cloud-first GitHub path.
+- 2026-09-13: Curated, accepted, and indexed
+  [[deterministic-agent-coding-control-plane]] from the base report, alternative
+  analysis, and deep research; selected GitHub Agentic Workflows with Copilot
+  as the first implementation path.
+- 2026-10-03: Created draft [[framework-notebook]] from Christian's confirmed
+  Intel-X7/32GB order configuration and official Framework specifications;
+  SSD selection and delivery remain open.
