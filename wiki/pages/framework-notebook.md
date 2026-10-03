@@ -7,6 +7,11 @@ created: 2026-10-03
 sources:
   - _raw/conversations/2026-10-03--framework-notebook-konfiguration.md
   - _raw/sources/2026-10-03--framework-laptop-13-pro-intel-specs.md
+  - _raw/research/framework-notebook-ssd-type--shallow/report.md
+  - _raw/research/framework-notebook-gen4-ssd-shortlist--shallow/report.md
+  - _raw/research/framework-notebook-ssd-fit--shallow/report.md
+  - _raw/research/framework-notebook-gen4-more-options--shallow/report.md
+  - _raw/conversations/2026-10-03--framework-ssd-auswahl-und-preisabgleich.md
 ---
 
 # Christians Framework Laptop 13 Pro
@@ -62,7 +67,35 @@ Kompatibilitätsgrenzen.
 
 Für doppelseitige SSDs und Modelle mit Heatspreader gelten besondere
 Einbauhinweise. Vor einem Einbau die vollständige Herstelleranleitung prüfen.
-Konkretes SSD-Modell, Kapazität und Budget wurden noch nicht festgelegt.
+Das konkrete SSD-Modell und Budget sind noch offen. Christian bevorzugt nun
+2 TB; 1 TB bleibt eine Ausweichoption.
+
+### Recherchestand zur SSD, 3. Oktober 2026
+
+Empfohlene Ausgangsklasse: **PCIe 4.0 x4, TLC-NAND, effizientes Client-Design,
+vorzugsweise einseitig und ohne zusätzlichen Kühlkörper**. Eine gute DRAMlose
+SSD mit HMB genügt als Ausgangspunkt für normale Entwicklung. Für intensive
+VM-/Datenbank-I/O kann eigener DRAM interessant sein. Diese Einordnung ist
+eine Empfehlung, keine bestätigte Kaufentscheidung.
+
+**Erster Prüfkandidat: SN7100 2 TB.** Der
+[Konfigurator für genau die Intel-Pro-DIY-Variante](https://frame.work/products/laptop13pro-diy-intel-ultra-3/body/new)
+führt SN7100 mit 1 TB und 2 TB auf; die Passung ist damit direkt durch
+Framework belegt. Weitere Kandidaten sind 990 EVO Plus, NM790 und 990 PRO.
+KIOXIA EXCERIA PLUS G3 und SK hynix Platinum P41 haben laut Hersteller
+einseitige M.2-2280-Bestückung; deren Passung ist aus den Spezifikationen
+abgeleitet, nicht im konkreten Notebook getestet.
+
+Der direkte Preisabgleich vom 3. Oktober zeigte für SN7100 2 TB ab 279 EUR
+exklusive Versand. Das ist eine vergängliche Momentaufnahme; vor Kauf neu
+prüfen. Der von einer externen Recherche genannte Lexar-M7-2-TB-Preis von
+227,99 EUR war nicht bestätigt: Die geöffnete Geizhals-Seite zeigte keine
+Angebote in der gewählten Region. Herstellerdaten und Passung der M7 sind offen.
+
+Es gibt keine vergleichbaren Framework-Messungen zur Energie oder Temperatur
+dieser Auswahl. PCIe-Generation, eigener DRAM oder HMB allein sind kein
+verlässlicher Ersatz dafür. Ein Auslagern schwerer Workloads auf einen Server
+ist in diesem Gespräch nicht bestätigt und wird nicht als Kaufargument benutzt.
 
 ## Bisheriger Nutzungskontext
 
@@ -77,10 +110,12 @@ und konkretes Monitor-Setup sind noch nicht bestätigt.
   und Gesprächsstand, ohne Kontakt- oder Zahlungsdaten.
 - [[2026-10-03--framework-laptop-13-pro-intel-specs]] — datierter
   Herstellerabgleich mit Original-URLs.
+- [[2026-10-03--framework-ssd-auswahl-und-preisabgleich]] — Größenpräferenz,
+  recherchierte Kandidaten und datierter Preisabgleich.
 
 ## Offene Fragen und Widersprüche
 
-- Welche SSD-Kapazität und welches Budget sind gewünscht?
+- Welches SSD-Modell und Budget? 2 TB bevorzugt, 1 TB als Ausweichoption.
 - Welche Linux-Distribution soll installiert werden?
 - Welche drei Monitore mit welchen Auflösungen/Bildraten und welchem Dock
   sollen betrieben werden? Vier videofähige Slots belegen noch keine konkrete

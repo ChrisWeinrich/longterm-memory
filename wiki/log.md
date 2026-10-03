@@ -57,3 +57,6 @@ state: accepted
 - 2026-10-03: Created draft [[framework-notebook]] from Christian's confirmed
   Intel-X7/32GB order configuration and official Framework specifications;
   SSD selection and delivery remain open.
+- 2026-10-03: Updated draft [[framework-notebook]] with four shallow SSD
+  reports, the 2TB preference, directly evidenced SN7100 fit, and a dated
+  price cross-check; no final purchase decision or acceptance recorded.
